@@ -5,6 +5,8 @@
 #include <string.h>
 #include <errno.h>
 
+//test
+
 //#define DEBUG_ON
 #if defined(DEBUG_ON)
 	#define DEBUG(format, args...) printf("LINE %d: " format, __LINE__, args)
