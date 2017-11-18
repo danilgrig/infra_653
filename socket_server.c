@@ -44,6 +44,11 @@ int main(int argc, char *argv[]) {
 	printf("got new connection\n");
 
 	char s[100];
-	int i = recv(connfd, s, 100, 0);
-	printf("recv %d chars, %s", i, s);
+	printf("waiting for a message ...\n");
+	int i;
+       	i = recv(connfd, s, 10, 0);
+
+	printf("recv %d chars, %s\n", i, s);
+
+	return 0;
 }

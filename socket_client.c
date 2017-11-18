@@ -41,10 +41,11 @@ int main(int argc, char *argv[]) {
 		die("Connect Failed");
 	}
 
-	if (send(sockfd, argv[2], 1 + strlen(argv[2]), 0) < 0) {
+	printf("sending msg '%s' to server...\n", argv[2]);
+	if (send(sockfd, argv[2], 1 + strlen(argv[2]), MSG_CONFIRM) < 0) {
 		die("can't send");
 	}
-	printf("send my name to server\n");
+	printf("send have done\n");
 
 	return 0;
 }
