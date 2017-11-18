@@ -10,20 +10,6 @@
 #include <time.h>
 #include <pthread.h>
 
-#define max_text 1000
-#define max_name 100
-
-struct msg_t {
-	time_t time;
-	char name[max_name];
-	char text[max_text];
-};
-
-struct user_t {
-	char name[max_name];
-	int connfd, idx, authorized;
-};
-
 
 void die(char *msg) {
 	printf("error: %s, %s\n", msg, strerror(errno));
@@ -56,4 +42,7 @@ int main(int argc, char *argv[]) {
 	}
 	printf("got new connection\n");
 
+	char s[100];
+	int i = recv(connfd, s, 100, 0);
+	printf("recv %d chars, %s", i, s);
 }
