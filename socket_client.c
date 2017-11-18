@@ -14,32 +14,14 @@
 #define max_name 100
 
 struct msg_t {
-	time_t time;
-	char name[max_name];
-	char text[max_text];
+        time_t time;
+        char name[max_name];
+        char text[max_text];
 };
 
 void die(char *msg) {
 	printf("error: %s, %s\n", msg, strerror(errno));
 	exit(1);
-}
-
-void* wait_messages(void* _arg) {
-	int sockfd = *((int *)_arg);
-	int recv_len;
-	struct msg_t msg;
-
-	printf("started thread\n");
-
-	while (1) {
-		if ((recv_len = recv(sockfd, &msg, sizeof(msg), 0)) <= 0) {
-			die("can't recv");
-		}
-
-		printf("received %d bytes from %s: %s\n", recv_len, msg.name, msg.text);
-	}
-
-	return NULL;
 }
 
 int main(int argc, char *argv[]) {
@@ -66,28 +48,12 @@ int main(int argc, char *argv[]) {
 
 	if (connect(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
 		die("Connect Failed");
-	} 
-	int result = pthread_create(
-		&thread_id,
-		(pthread_attr_t *)NULL, 
-		wait_messages,
-		&sockfd
-	);
+	}
 
-	strcpy(msg.name, argv[2]);
-	strcpy(msg.text, "i am connected");
 	if (send(sockfd, &msg, sizeof(msg), 0) < 0) {
 		die("can't send");
 	}
 	printf("send my name to server\n");
-
-	while (1) {
-		scanf("%s", msg.text);
-		if (send(sockfd, &msg, sizeof(msg), 0) < 0) {
-			die("can't send");
-		}
-		printf("send msg to server\n");
-	}
 
 	return 0;
 }
