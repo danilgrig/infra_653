@@ -35,6 +35,7 @@ int main(int argc, char *argv[]) {
 	if (listen(listenfd, 10) < 0) {
 		die("can't listen");
 	}
+	printf("server was started\n");
 
 	int connfd;
 	if ((connfd = accept(listenfd, (struct sockaddr*)NULL, NULL)) < 0) {

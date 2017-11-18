@@ -41,7 +41,7 @@ int main(int argc, char *argv[]) {
 		die("Connect Failed");
 	}
 
-	if (send(sockfd, argv[2], strlen(argv[2]), 0) < 0) {
+	if (send(sockfd, argv[2], 1 + strlen(argv[2]), 0) < 0) {
 		die("can't send");
 	}
 	printf("send my name to server\n");
