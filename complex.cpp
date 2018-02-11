@@ -8,5 +8,5 @@ int main() {
 	c = a + b;
 	c = a - b;
 	c.print();
-	cin << c.abs() << endl;
+	cout << c.abs() << endl;
 }
