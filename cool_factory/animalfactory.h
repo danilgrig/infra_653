@@ -6,11 +6,11 @@
 
 using namespace std;
 
-#define REGISTER_ANIMAL(TYPE, CLASS)                  \
+#define REGISTER_ANIMAL(CLASS)                        \
 namespace {                                           \
-    CLASS animal;                                     \
+    T##CLASS animal;                                  \
     TAnimalFactory& f = TAnimalFactory::GetFactory(); \
-    bool b = f.RegisterAnimal(TYPE, &animal);         \
+    bool b = f.RegisterAnimal(#CLASS, &animal);       \
 }
 
 class TAnimalFactory {

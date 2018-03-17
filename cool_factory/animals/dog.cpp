@@ -14,4 +14,4 @@ public:
     }
 };
 
-REGISTER_ANIMAL("Dog", TDog);
+REGISTER_ANIMAL(Dog);

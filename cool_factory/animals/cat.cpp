@@ -14,6 +14,6 @@ public:
     }
 };
 
-REGISTER_ANIMAL("Cat", TCat);
+REGISTER_ANIMAL(Cat);
 
 
