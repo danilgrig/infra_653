@@ -2,6 +2,13 @@
 
 using namespace std;
 
+/*
+На подобии архитектуры классов Animal, Cat, Dog придумать и реализовать классы Department, FMBF, FOPF, итп.
+Продумать какой может быть интерфейс у Department, какие функции могут быть переопределены у наследников.
+Программа принимает на вход 3 числа, баллы его по трем предметам.
+Создает по экземпляру класса каждого из факультетов, по очереди опрашивает факультеты, хотят ли они принять абитуриента с такими баллами.
+*/
+
 class TAnimal {
 public:
     int mass, x;
@@ -10,9 +17,6 @@ public:
     }
     void Say() {
         cout << GetValue() << " " << mass << endl;
-    }
-    bool IsEnoughScores() {
-        return 1 > 2;
     }
     virtual string GetValue() const = 0;
 };
@@ -29,13 +33,6 @@ class TDog : public TAnimal {
 public:
     string GetValue() const override {
         return "Dog";
-    }
-};
-
-class NoValue : public exception {
-public:
-    string what() {
-        return "No such value";
     }
 };
 
